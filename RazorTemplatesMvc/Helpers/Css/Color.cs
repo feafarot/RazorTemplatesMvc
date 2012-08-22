@@ -119,7 +119,7 @@
         public ColorDisplayBehavior ColorDisplayBehavior { get { return colorDisplayBehavior; } set { colorDisplayBehavior = value; } }
 
         /// <summary>
-        /// Updates current colors alpha channel and returns updated value. <remarks>Fluent.</remarks>
+        /// Updates current colors alpha channel and returns updated value. <remarks> Fluent.</remarks>
         /// </summary>
         /// <param name="alpha">The new alpha channel value.</param>
         /// <returns>Updated color value.</returns>
