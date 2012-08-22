@@ -123,7 +123,7 @@
         /// </summary>
         /// <param name="alpha">The new alpha channel value.</param>
         /// <returns>Updated color value.</returns>
-        public Color UAlpha(float alpha)
+        public Color NewAlpha(float alpha)
         {
             Alpha = alpha;
             return this;
