@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "File Templates", "File Temp
 		File Templates\Razor Css Template (Razor CSCSS).zip = File Templates\Razor Css Template (Razor CSCSS).zip
 		File Templates\Razor Js Template (For .cshtml transform).zip = File Templates\Razor Js Template (For .cshtml transform).zip
 		File Templates\Razor Js Template (Razor, CSJS).zip = File Templates\Razor Js Template (Razor, CSJS).zip
+		README.md = README.md
+		Settings.StyleCop = Settings.StyleCop
 	EndProjectSection
 EndProject
 Global
