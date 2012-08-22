@@ -1,0 +1,5 @@
+﻿    - Implement:
+1. Configuration of template handler.
+1.1. Function that allows to read files with "cs" prefix in file extensions. (?) +
+1.2. Defile allowed file types. +
+2. Visual studio extension that allows correct Intelli-Sense for razor extensions in (cs)css and (cs)js files. (maybe hard)

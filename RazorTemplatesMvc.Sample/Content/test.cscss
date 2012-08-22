@@ -1,0 +1,9 @@
+﻿@using RazorTemplatesMvc
+@using RazorTemplatesMvc.Helpers.Css
+@{
+    var mainColor = new Color(0, 153, 255, DisplayBehavior.Normal);
+}
+h1 
+{
+    color: @mainColor;
+}

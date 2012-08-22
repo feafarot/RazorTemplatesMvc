@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorTemplatesMvc.Sample", "RazorTemplatesMvc.Sample\RazorTemplatesMvc.Sample.csproj", "{D71B6D81-B731-43C9-8A51-7B6AA8FE358F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorTemplatesMvc", "RazorTemplatesMvc\RazorTemplatesMvc.csproj", "{8E65EE49-1D10-4D70-BEBB-729D633492CA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "File Templates", "File Templates", "{D3F2E7B7-E2C6-470F-B18C-0B6B086FDE97}"
+	ProjectSection(SolutionItems) = preProject
+		File Templates\Razor Css Template (For .cshtml transform).zip = File Templates\Razor Css Template (For .cshtml transform).zip
+		File Templates\Razor Css Template (Razor CSCSS).zip = File Templates\Razor Css Template (Razor CSCSS).zip
+		File Templates\Razor Js Template (For .cshtml transform).zip = File Templates\Razor Js Template (For .cshtml transform).zip
+		File Templates\Razor Js Template (Razor, CSJS).zip = File Templates\Razor Js Template (Razor, CSJS).zip
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D71B6D81-B731-43C9-8A51-7B6AA8FE358F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D71B6D81-B731-43C9-8A51-7B6AA8FE358F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D71B6D81-B731-43C9-8A51-7B6AA8FE358F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D71B6D81-B731-43C9-8A51-7B6AA8FE358F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E65EE49-1D10-4D70-BEBB-729D633492CA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E65EE49-1D10-4D70-BEBB-729D633492CA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E65EE49-1D10-4D70-BEBB-729D633492CA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E65EE49-1D10-4D70-BEBB-729D633492CA}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

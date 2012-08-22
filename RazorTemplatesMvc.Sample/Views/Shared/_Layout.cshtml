@@ -1,0 +1,15 @@
+﻿@using RazorTemplatesMvc
+<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewBag.Title</title>
+    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.Content("~/Scripts/jquery-1.4.4.min.js")" type="text/javascript"></script>
+    @Html.CssTemplateRoute(Url, "CssRoute", new { cssname = "test" })
+    @Html.JsTemplateRoute(Url, "JsRoute", new { jsname = "test" })
+</head>
+
+<body>
+    @RenderBody()
+</body>
+</html>
