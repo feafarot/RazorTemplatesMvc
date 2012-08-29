@@ -7,7 +7,7 @@
     using RazorEngine;
 
     /// <summary>
-    /// Template MVC route and HTTP handler class definition.
+    /// Template MVC route and HTTP handler.
     /// </summary>
     public class TemplateRouteHttpHandler : IRouteHandler, IHttpHandler
     {
