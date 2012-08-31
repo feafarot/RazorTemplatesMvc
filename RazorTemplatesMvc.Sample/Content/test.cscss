@@ -1,9 +1,10 @@
 ﻿@using RazorTemplatesMvc
 @using RazorTemplatesMvc.Helpers.Css
 @{
-    var mainColor = new Color(0, 153, 255, DisplayBehavior.Normal);
+    var mainColor = new Color(0, 153, 255, ColorDisplayBehavior.Normal);
 }
 h1 
 {
     color: @mainColor;
+    background-color: @Model.Session["bgc"];
 }

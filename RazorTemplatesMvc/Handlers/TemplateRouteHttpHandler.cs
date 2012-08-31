@@ -2,9 +2,13 @@
 {
     using System;
     using System.IO;
+    using System.ServiceModel.Channels;
     using System.Web;
+    using System.Web.Mvc;
     using System.Web.Routing;
     using RazorEngine;
+    using RazorEngine.Templating;
+    using RequestContext = System.Web.Routing.RequestContext;
 
     /// <summary>
     /// Template MVC route and HTTP handler.
@@ -88,8 +92,10 @@
         {
             var fileName = GetFileName(context.Request.AppRelativeCurrentExecutionFilePath);
             var realFilePath = GetRealFilePath(fileName);
+            var textTemplate = File.ReadAllText(context.Server.MapPath(realFilePath));
 
-            var parsedTemplate = Razor.Parse(File.ReadAllText(context.Server.MapPath(realFilePath)));
+            dynamic model = CreateModel(context);
+            var parsedTemplate = Razor.Parse(textTemplate, model);
             if (mode == FileTypeHandlingMode.TransformFromCshtml)
             {
                 parsedTemplate = ClearTemplate(parsedTemplate);
@@ -97,6 +103,13 @@
 
             context.Response.ContentType = responseType;
             context.Response.Write(parsedTemplate);
+        }
+
+        private dynamic CreateModel(HttpContext context)
+        {
+            dynamic model = new { };
+            var resolver = DependencyResolver.Current;
+            return model;
         }
 
         private string ClearTemplate(string parsedTemplate)
