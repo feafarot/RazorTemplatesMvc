@@ -7,7 +7,7 @@
     {
         public ActionResult Index()
         {
-            Session["background"] = new Color(10, 30, 55);
+            Session["footerTextColor"] = new Color(117, 120, 120);
             ViewBag.Version = typeof(Color).Assembly.GetName().Version.ToString();
             return View();
         }

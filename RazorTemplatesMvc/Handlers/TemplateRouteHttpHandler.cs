@@ -110,8 +110,15 @@
 
         private TemplateModel CreateModel(HttpContext context)
         {
+            Dictionary<string, string> parameters = null;
+            if (context.Request.QueryString.Count > 0)
+            {
+                parameters = context.Request.QueryString.Keys.Cast<string>().ToDictionary(x => x, x => context.Request.QueryString[x]);
+            }
+
             var model = new TemplateModel
                 {
+                    Parameters = parameters,
                     Session = context.Session
                 };
             return model;

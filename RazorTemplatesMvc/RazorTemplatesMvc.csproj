@@ -31,7 +31,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="RazorEngine">
+    <Reference Include="RazorEngine, Version=3.0.8.0, Culture=neutral, PublicKeyToken=9ee697374c7e744a, processorArchitecture=MSIL">
       <HintPath>..\packages\RazorEngine.3.0.8\lib\net40\RazorEngine.dll</HintPath>
     </Reference>
     <Reference Include="System" />
@@ -53,20 +53,22 @@
     <Compile Include="ContentType.cs" />
     <Compile Include="Extensions.cs" />
     <Compile Include="FileTypeHandlingMode.cs" />
+    <Compile Include="Handlers\TemplateModel.cs" />
     <Compile Include="Handlers\TemplateRouteHttpHandler.cs" />
     <Compile Include="Helpers\Css\Color.cs" />
     <Compile Include="Helpers\Css\ColorDisplayBehavior.cs" />
+    <Compile Include="Parameter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TemplateRouteFactory.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="todo.txt" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Helpers\Js\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
