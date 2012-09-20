@@ -7,7 +7,8 @@
     {
         public ActionResult Index()
         {
-            Session["bgc"] = new Color(10, 30, 55);
+            Session["background"] = new Color(10, 30, 55);
+            ViewBag.Version = typeof(Color).Assembly.GetName().Version.ToString();
             return View();
         }
     }

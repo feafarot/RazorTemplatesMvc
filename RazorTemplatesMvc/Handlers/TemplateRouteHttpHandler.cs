@@ -1,19 +1,22 @@
 ﻿namespace RazorTemplatesMvc.Handlers
 {
     using System;
+    using System.Collections.Generic;
     using System.IO;
-    using System.ServiceModel.Channels;
+    using System.Linq;
     using System.Web;
     using System.Web.Mvc;
     using System.Web.Routing;
+    using System.Web.SessionState;
     using RazorEngine;
-    using RazorEngine.Templating;
+
     using RequestContext = System.Web.Routing.RequestContext;
+    using RazorEngine.Templating;
 
     /// <summary>
     /// Template MVC route and HTTP handler.
     /// </summary>
-    public class TemplateRouteHttpHandler : IRouteHandler, IHttpHandler
+    public class TemplateRouteHttpHandler : IRouteHandler, IHttpHandler, IRequiresSessionState
     {
         private const string StylePattern = "<style type=\"text/css\">";
 
@@ -94,8 +97,8 @@
             var realFilePath = GetRealFilePath(fileName);
             var textTemplate = File.ReadAllText(context.Server.MapPath(realFilePath));
 
-            dynamic model = CreateModel(context);
-            var parsedTemplate = Razor.Parse(textTemplate, model);
+            TemplateModel model = CreateModel(context);
+            var parsedTemplate = Razor.Parse<TemplateModel>(textTemplate, model);
             if (mode == FileTypeHandlingMode.TransformFromCshtml)
             {
                 parsedTemplate = ClearTemplate(parsedTemplate);
@@ -105,10 +108,12 @@
             context.Response.Write(parsedTemplate);
         }
 
-        private dynamic CreateModel(HttpContext context)
+        private TemplateModel CreateModel(HttpContext context)
         {
-            dynamic model = new { };
-            var resolver = DependencyResolver.Current;
+            var model = new TemplateModel
+                {
+                    Session = context.Session
+                };
             return model;
         }
 

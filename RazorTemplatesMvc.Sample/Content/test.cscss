@@ -3,8 +3,11 @@
 @{
     var mainColor = new Color(0, 153, 255, ColorDisplayBehavior.Normal);
 }
-h1 
+h3 
 {
     color: @mainColor;
-    background-color: @Model.Session["bgc"];
+}
+body
+{
+    background-color: @Model.Session["background"];
 }
