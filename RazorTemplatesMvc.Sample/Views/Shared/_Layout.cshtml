@@ -4,6 +4,7 @@
 <html>
 <head>
     <title>@ViewBag.Title</title>
+    <link rel="shortcut icon" href="@Url.Content("~/favicon.ico")" />
     <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
     <script src="@Url.Content("~/Scripts/jquery-1.4.4.min.js")" type="text/javascript"></script>
     @Html.CssTemplateRoute(Url, "CssRoute", new { cssname = "test" }, new Parameter("backgroundColor", new Color(23, 26, 26)))
