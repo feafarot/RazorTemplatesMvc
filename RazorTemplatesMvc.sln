@@ -7,7 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorTemplatesMvc", "RazorT
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "File Templates", "File Templates", "{D3F2E7B7-E2C6-470F-B18C-0B6B086FDE97}"
 	ProjectSection(SolutionItems) = preProject
-		LICENSE.txt = LICENSE.txt
 		File Templates\Razor Css Template (For .cshtml transform).zip = File Templates\Razor Css Template (For .cshtml transform).zip
 		File Templates\Razor Css Template (Razor CSCSS).zip = File Templates\Razor Css Template (Razor CSCSS).zip
 		File Templates\Razor Js Template (For .cshtml transform).zip = File Templates\Razor Js Template (For .cshtml transform).zip

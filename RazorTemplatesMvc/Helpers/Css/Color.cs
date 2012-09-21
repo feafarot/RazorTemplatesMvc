@@ -18,6 +18,19 @@
         /// <summary>
         /// Initializes a new instance of the <see cref="Color"/> struct.
         /// </summary>
+        /// <param name="color">All data will be copied from this color instance.</param>
+        public Color(Color color)
+        {
+            this.internalAlpha = color.Alpha;
+            this.red = color.Red;
+            this.green = color.Green;
+            this.blue = color.Blue;
+            this.colorDisplayBehavior = color.ColorDisplayBehavior;
+        }
+
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Color"/> struct.
+        /// </summary>
         /// <param name="red">Red component.</param>
         /// <param name="green">The green component.</param>
         /// <param name="blue">The blue component.</param>
@@ -125,8 +138,8 @@
         /// <returns>Updated color value.</returns>
         public Color NewAlpha(float alpha)
         {
-            Alpha = alpha;
-            return this;
+            var tempColor = new Color(this) { Alpha = alpha };
+            return tempColor;
         }
 
         /// <summary>

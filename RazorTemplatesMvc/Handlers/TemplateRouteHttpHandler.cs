@@ -1,15 +1,22 @@
 ﻿namespace RazorTemplatesMvc.Handlers
 {
     using System;
+    using System.Collections.Generic;
     using System.IO;
+    using System.Linq;
     using System.Web;
+    using System.Web.Mvc;
     using System.Web.Routing;
+    using System.Web.SessionState;
     using RazorEngine;
 
+    using RequestContext = System.Web.Routing.RequestContext;
+    using RazorEngine.Templating;
+
     /// <summary>
-    /// Template MVC route and HTTP handler class definition.
+    /// Template MVC route and HTTP handler.
     /// </summary>
-    public class TemplateRouteHttpHandler : IRouteHandler, IHttpHandler
+    public class TemplateRouteHttpHandler : IRouteHandler, IHttpHandler, IRequiresSessionState
     {
         private const string StylePattern = "<style type=\"text/css\">";
 
@@ -88,8 +95,10 @@
         {
             var fileName = GetFileName(context.Request.AppRelativeCurrentExecutionFilePath);
             var realFilePath = GetRealFilePath(fileName);
+            var textTemplate = File.ReadAllText(context.Server.MapPath(realFilePath));
 
-            var parsedTemplate = Razor.Parse(File.ReadAllText(context.Server.MapPath(realFilePath)));
+            TemplateModel model = CreateModel(context);
+            var parsedTemplate = Razor.Parse<TemplateModel>(textTemplate, model);
             if (mode == FileTypeHandlingMode.TransformFromCshtml)
             {
                 parsedTemplate = ClearTemplate(parsedTemplate);
@@ -97,6 +106,22 @@
 
             context.Response.ContentType = responseType;
             context.Response.Write(parsedTemplate);
+        }
+
+        private TemplateModel CreateModel(HttpContext context)
+        {
+            Dictionary<string, string> parameters = null;
+            if (context.Request.QueryString.Count > 0)
+            {
+                parameters = context.Request.QueryString.Keys.Cast<string>().ToDictionary(x => x, x => context.Request.QueryString[x]);
+            }
+
+            var model = new TemplateModel
+                {
+                    Parameters = parameters,
+                    Session = context.Session
+                };
+            return model;
         }
 
         private string ClearTemplate(string parsedTemplate)

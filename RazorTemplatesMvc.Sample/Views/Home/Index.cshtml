@@ -3,4 +3,12 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Hello!</h1>
+<h3>Razor Templates MVC</h3>
+<p>
+    RazorTemplatesMvc - a tool for creating template files of any type using the features of the engine "Razor". See <a href="https://github.com/feafarot/RazorTemplatesMvc/wiki/User-manual">wiki</a> for more details.
+</p>
+
+@section Footer 
+{
+   feafarot<small>&copy;</small> Razor Templates MVC <span>v.@ViewBag.version</span>
+}
