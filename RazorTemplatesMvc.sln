@@ -1,10 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorTemplatesMvc.Sample", "RazorTemplatesMvc.Sample\RazorTemplatesMvc.Sample.csproj", "{D71B6D81-B731-43C9-8A51-7B6AA8FE358F}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorTemplatesMvc", "RazorTemplatesMvc\RazorTemplatesMvc.csproj", "{8E65EE49-1D10-4D70-BEBB-729D633492CA}"
-EndProject
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "File Templates", "File Templates", "{D3F2E7B7-E2C6-470F-B18C-0B6B086FDE97}"
 	ProjectSection(SolutionItems) = preProject
 		File Templates\Razor Css Template (For .cshtml transform).zip = File Templates\Razor Css Template (For .cshtml transform).zip
@@ -13,6 +9,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "File Templates", "File Temp
 		File Templates\Razor Js Template (Razor, CSJS).zip = File Templates\Razor Js Template (Razor, CSJS).zip
 		README.md = README.md
 		Settings.StyleCop = Settings.StyleCop
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorTemplatesMvc.Sample", "RazorTemplatesMvc.Sample\RazorTemplatesMvc.Sample.csproj", "{D71B6D81-B731-43C9-8A51-7B6AA8FE358F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RazorTemplatesMvc", "RazorTemplatesMvc\RazorTemplatesMvc.csproj", "{8E65EE49-1D10-4D70-BEBB-729D633492CA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{9B615FD6-6601-4D89-97CC-A3184F22E0B9}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
 	EndProjectSection
 EndProject
 Global
