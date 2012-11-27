@@ -1,0 +1,135 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <title>Razor Templates MVC by feafarot</title>
+    <link rel="stylesheet" href="stylesheets/styles.css">
+    <link rel="stylesheet" href="stylesheets/pygment_trac.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
+    <script src="javascripts/respond.js"></script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="stylesheets/ie.css">
+    <![endif]-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+
+  </head>
+  <body>
+      <div id="header">
+        <nav>
+          <li class="fork"><a href="https://github.com/feafarot/RazorTemplatesMvc">View On GitHub</a></li>
+          <li class="downloads"><a href="https://github.com/feafarot/RazorTemplatesMvc/zipball/master">ZIP</a></li>
+          <li class="downloads"><a href="https://github.com/feafarot/RazorTemplatesMvc/tarball/master">TAR</a></li>
+          <li class="title">DOWNLOADS</li>
+        </nav>
+      </div><!-- end header -->
+
+    <div class="wrapper">
+
+      <section>
+        <div id="title">
+          <h1>Razor Templates MVC</h1>
+          <p>Custom razor files templates for ASP.NET MVC applications.</p>
+          <hr>
+          <span class="credits left">Project maintained by <a href="https://github.com/feafarot">feafarot</a></span>
+          <span class="credits right">Hosted on GitHub Pages &mdash; Theme by <a href="http://twitter.com/#!/michigangraham">mattgraham</a></span>
+        </div>
+
+        <h3>Razor Templates MVC</h3>
+
+<p>RazorTemplatesMvc - a tool for creating template files of any type using the features of the engine "Razor". This library allows to use C# code via Razor Engine in different files like <code>.css</code> or <code>.js</code> files.  In this files it is possible to access ASP.NET session, also in this file can be pass parameters via URL.</p>
+
+<h3>Install / Add library</h3>
+
+<p>At first library <em>RazorTemplatesMvc.dll</em> should be included in to ASP.NET MVC project. It can be installed by typing in the NuGet Package Manager Console the following line:</p>
+
+<blockquote>
+<p>Install-Package RazorTemplatesMvc</p>
+</blockquote>
+
+<h3>Adding template handling route</h3>
+
+<p>Route is needed to be added in <code>Global.asax.cs</code>. Templates will be handled using this route. Route can be created with static method <code>CreateRoute</code> of static class <code>TemplateRouteFactory</code>.
+For example, to create route that will handle templated <code>.css</code> files, following code can be used:</p>
+
+<div class="highlight"><pre><span class="kt">var</span> <span class="n">templateRoute</span> <span class="p">=</span> <span class="k">new</span> <span class="n">TemplateRouteFactory</span><span class="p">.</span><span class="n">CreateRoute</span><span class="p">(</span>
+    <span class="s">"css/{name}.css"</span><span class="p">,</span> 
+    <span class="n">ContentType</span><span class="p">.</span><span class="n">Css</span><span class="p">,</span> 
+    <span class="s">"~/Content"</span><span class="p">,</span> 
+    <span class="n">FileTypeHandlingMode</span><span class="p">.</span><span class="n">WithCsExtensionPrefix</span><span class="p">);</span>
+<span class="n">routes</span><span class="p">.</span><span class="n">Add</span><span class="p">(</span><span class="s">"CssRoute"</span><span class="p">,</span> <span class="n">templateRoute</span><span class="p">);</span>
+</pre></div>
+
+<h3>Adding of templated file</h3>
+
+<p>After adding a route, templates files should be added to folder that was passed in 3-rd parameter in <code>CreateRoute</code> method. In example case it will be folder <code>/Content</code> in root of project. For example file <code>test.cscss</code> (this extension is used because route was registered with <code>FileTypeHandlingMode.WithCsExtensionPrefix</code> parameter, and because <code>.css</code> will be external file type, than <code>.cscss</code> - internal file type), in which <code>C#</code> code can be used via <code>Razor</code> engine. For example: </p>
+
+<div class="highlight"><pre><span class="n">@using</span> <span class="n">RazorTemplatesMvc</span>
+<span class="n">@using</span> <span class="n">RazorTemplatesMvc</span><span class="p">.</span><span class="n">Helpers</span><span class="p">.</span><span class="n">Css</span>
+<span class="err">@</span><span class="p">{</span>
+    <span class="kt">var</span> <span class="n">mainColor</span> <span class="p">=</span> <span class="k">new</span> <span class="n">Color</span><span class="p">(</span><span class="m">0</span><span class="p">,</span> <span class="m">153</span><span class="p">,</span> <span class="m">255</span><span class="p">,</span> <span class="n">DisplayBehavior</span><span class="p">.</span><span class="n">Normal</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="n">h1</span>
+<span class="p">{</span>
+    <span class="n">color</span><span class="p">:</span> <span class="n">@mainColor</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+
+<h3>Adding template reference</h3>
+
+<p>Extension methods <code>CssTemplateRoute</code> or <code>JsTemplateRoute</code> can be used in markup to add reference on <code>.cshtml</code> view. To use this methods <code>@using RazorTemplatesMvc</code> should be added in view. Or link can be added manually. For exeample: </p>
+
+<div class="highlight"><pre><span class="n">@Html</span><span class="p">.</span><span class="n">CssTemplateRoute</span><span class="p">(</span><span class="n">Url</span><span class="p">,</span> <span class="s">"CssRoute"</span><span class="p">,</span> <span class="k">new</span> <span class="p">{</span> <span class="n">name</span> <span class="p">=</span> <span class="s">"test"</span> <span class="p">})</span>
+</pre></div>
+
+<p>This methods generates next markup: </p>
+
+<div class="highlight"><pre><span class="nt">&lt;link</span> <span class="na">href=</span><span class="s">"/css/test.css"</span> <span class="na">type=</span><span class="s">"text/css"</span> <span class="na">rel=</span><span class="s">"stylesheet"</span> <span class="nt">/&gt;</span>
+</pre></div>
+
+<p>And after navigation by generated link will be next content: </p>
+
+<div class="highlight"><pre><span class="nt">h1</span>
+<span class="p">{</span>
+    <span class="k">color</span><span class="o">:</span> <span class="n">rgba</span><span class="p">(</span><span class="m">0</span><span class="o">,</span> <span class="m">153</span><span class="o">,</span> <span class="m">255</span><span class="o">,</span> <span class="m">1</span><span class="p">);</span>  
+<span class="p">}</span>
+</pre></div>
+
+<h3>Access to ASP.NET Session</h3>
+
+<p>Session can be accessed over <code>@Model.Session</code> in the template file. As sample:</p>
+
+<div class="highlight"><pre><span class="nt">body</span> 
+<span class="p">{</span> 
+    <span class="k">background-color</span><span class="o">:</span> <span class="o">@</span><span class="n">Model</span><span class="o">.</span><span class="n">Session</span><span class="p">[</span><span class="s2">"bgcolor"</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+
+<p>! Need to make sure that Session is already initialized.</p>
+
+<h3>Template file parameters</h3>
+
+<p>In template file can be passed different parameters. To pass parameters into template file, overload of method <code>CssTemplateRoute</code> that takes four arguments can be used. Sample:</p>
+
+<div class="highlight"><pre><span class="n">@Html</span><span class="p">.</span><span class="n">CssTemplateRoute</span><span class="p">(</span><span class="n">Url</span><span class="p">,</span> <span class="s">"CssRoute"</span><span class="p">,</span> <span class="k">new</span> <span class="p">{</span> <span class="n">cssname</span> <span class="p">=</span> <span class="s">"test"</span> <span class="p">},</span> <span class="k">new</span> <span class="n">Parameter</span><span class="p">(</span><span class="s">"backgroundColor"</span><span class="p">,</span> <span class="k">new</span> <span class="n">Color</span><span class="p">(</span><span class="m">23</span><span class="p">,</span> <span class="m">26</span><span class="p">,</span> <span class="m">26</span><span class="p">)))</span>
+</pre></div>
+
+<p>Parameters can be obtained via <code>@Model.Parameters</code> property in template file.</p>
+
+<div class="highlight"><pre><span class="nt">body</span> 
+<span class="p">{</span>
+    <span class="k">background-color</span><span class="o">:</span> <span class="o">@</span><span class="n">Model</span><span class="o">.</span><span class="n">Parameters</span><span class="p">[</span><span class="s2">"backgroundColor"</span><span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+
+<p><a href="https://github.com/feafarot/RazorTemplatesMvc/wiki/%D0%A0%D1%83%D0%BA%D0%BE%D0%B2%D0%BE%D0%B4%D1%81%D1%82%D0%B2%D0%BE-%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D0%B5%D0%BB%D1%8F">Русская версия</a></p>
+      </section>
+
+    </div>
+    <!--[if !IE]><script>fixScale(document);</script><![endif]-->
+    
+  </body>
+</html>
